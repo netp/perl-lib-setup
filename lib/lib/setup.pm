@@ -35,7 +35,10 @@ sub _find_libs {
     $current_libs{$p} = 1 if $p;
   }
 
-  return grep { -d $_ and ++$current_libs{$_} == 1 } map { $root->child($_)->realpath->stringify } @dirs;
+  return
+    grep { $_ and -d $_ and ++$current_libs{$_} == 1 }
+    map { eval { $root->child($_)->realpath->stringify } }
+    @dirs;
 }
 
 sub _find_project_root {
