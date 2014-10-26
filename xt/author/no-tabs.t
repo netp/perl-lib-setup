@@ -8,7 +8,17 @@ use Test::NoTabs;
 
 my @files = (
     'lib/lib/setup.pm',
-    't/00-compile.t'
+    't/00-compile.t',
+    't/10-lib-setup.t',
+    't/tlib/defaults-1/Makefile.PL',
+    't/tlib/defaults-1/bin/t.pl',
+    't/tlib/defaults-1/matches.lst',
+    't/tlib/dup-dirs/Makefile.PL',
+    't/tlib/dup-dirs/bin/t.pl',
+    't/tlib/dup-dirs/matches.lst',
+    't/tlib/full/MyRootIsHere',
+    't/tlib/full/bin/t.pl',
+    't/tlib/full/matches.lst'
 );
 
 notabs_ok($_) foreach @files;

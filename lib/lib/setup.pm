@@ -7,40 +7,45 @@ our $AUTHORITY = 'cpan:MELO'; # AUTHORITY
 use strict;
 use warnings;
 use Path::Tiny ();
+use FindBin    ();
 
 sub import {
   my (undef, $files, @dirs) = @_;
+
   undef $files if $files and ref($files) eq 'ARRAY' and !@$files;
   $files = ['.git', 'Makefile.PL', 'BUILD.PL', 'MANIFEST'] unless $files;
   $files = [$files] unless ref($files);
 
   push @dirs, 'lib' unless @dirs;
 
-  return _setup_lib($files, @dirs);
+  unshift @INC, _find_libs($files, @dirs);
 }
 
 
-sub _setup_lib {
+sub _find_libs {
   my ($files, @dirs) = @_;
 
   my $root = _find_project_root($files);
   return unless $root;    ## TODO: show warning in this case?
 
-  my %current_libs = map { Path::Tiny::path($_)->realpath->stringify => 1 } @INC;
-  for (reverse @dirs) {
-    my $d = $root->child($_)->realpath->stringify;
-    next if not -d $d or exists $current_libs{$d};
-    unshift @INC, $current_libs{$d} = $d;
+  my %current_libs;
+  for my $i (@INC) {
+    my $p;
+    eval { $p = Path::Tiny::path($i)->realpath->stringify };
+    $current_libs{$p} = 1 if $p;
   }
+
+  return grep { -d $_ and ++$current_libs{$_} == 1 } map { $root->child($_)->realpath->stringify } @dirs;
 }
 
 sub _find_project_root {
-  my $c = Path::Tiny::path($FindBin::Bin)->realpath->parent;
+  my $c = Path::Tiny::path($FindBin::Bin)->realpath;
 
   while (!$c->is_rootdir) {
     for (@{ $_[0] }) {
       return $c if $c->child($_)->exists;
     }
+    $c = $c->parent;
   }
 
   return;
@@ -115,17 +120,11 @@ L<lib::setup> which files to look for.
 The rest of the arguments is a list of relative directory paths that
 will be added to C<@INC>.
 
-If a directory to be added is already there, we will not added it again. L<lib::setup> uses L<File::Spec::realpath()
+If a directory to be added is already there, we will not added it again.
+L<lib::setup> uses the directories real path to determine if a directory
+is already on our @INC or not.
 
 =encoding utf-8
-
-=head1 STATUS
-
-This module status is: Alpha, Extreme-DogFooding.
-
-Alpha means that the interface is still subject to change. Extreme
-DogFooding means that the author is using this module on a production
-environement where real money is involved.
 
 =head1 EXTENDING
 
