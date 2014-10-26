@@ -6,6 +6,50 @@ package lib::setup;
 
 use strict;
 use warnings;
+use Path::Tiny ();
+use FindBin    ();
+
+sub import {
+  my (undef, $files, @dirs) = @_;
+
+  undef $files if $files and ref($files) eq 'ARRAY' and !@$files;
+  $files = ['.git', 'Makefile.PL', 'BUILD.PL', 'MANIFEST'] unless $files;
+  $files = [$files] unless ref($files);
+
+  push @dirs, 'lib' unless @dirs;
+
+  unshift @INC, _find_libs($files, @dirs);
+}
+
+
+sub _find_libs {
+  my ($files, @dirs) = @_;
+
+  my $root = _find_project_root($files);
+  return unless $root;    ## TODO: show warning in this case?
+
+  my %current_libs;
+  for my $i (@INC) {
+    my $p;
+    eval { $p = Path::Tiny::path($i)->realpath->stringify };
+    $current_libs{$p} = 1 if $p;
+  }
+
+  return grep { -d $_ and ++$current_libs{$_} == 1 } map { $root->child($_)->realpath->stringify } @dirs;
+}
+
+sub _find_project_root {
+  my $c = Path::Tiny::path($FindBin::Bin)->realpath;
+
+  while (!$c->is_rootdir) {
+    for (@{ $_[0] }) {
+      return $c if $c->child($_)->exists;
+    }
+    $c = $c->parent;
+  }
+
+  return;
+}
 
 1;
 
@@ -61,6 +105,11 @@ L<lib::setup> which files to look for.
 The rest of the arguments is a list of relative directory paths that
 will be added to C<@INC>.
 
+If a directory to be added is already there, we will not added it again.
+L<lib::setup> uses the directories real path to determine if a directory
+is already on our @INC or not.
+
+
 =head1 EXTENDING
 
 You may want to create your own L<lib::setup> project-specific rule set.
@@ -68,13 +117,13 @@ You may want to create your own L<lib::setup> project-specific rule set.
 The current recommended way of doing this is to create your own package like this:
 
     package my::lib::setup;
-    
+
     use strict;
     use lib::setup ();
-    
+
     sub import {
       @_ = (... your parameters go here...);
       goto &lib::setup::import;
     }
-    
+
     1;
