@@ -31,6 +31,7 @@ provides:
     file: lib/lib/setup.pm
     version: '0.001'
 requires:
+  Path::Tiny: '0'
   perl: '5.006'
 resources:
   bugtracker: https://github.com/melo/perl-lib-setup/issues

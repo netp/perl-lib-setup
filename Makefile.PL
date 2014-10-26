@@ -17,7 +17,9 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "artistic_2",
   "NAME" => "lib::setup",
-  "PREREQ_PM" => {},
+  "PREREQ_PM" => {
+    "Path::Tiny" => 0
+  },
   "TEST_REQUIRES" => {
     "File::Temp" => 0,
     "Test::More" => "0.98"
@@ -31,6 +33,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "File::Temp" => 0,
+  "Path::Tiny" => 0,
   "Test::More" => "0.98"
 );
 
