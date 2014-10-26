@@ -1,3 +1,4 @@
 t/tlib/full/lib
 !t/tlib/full/lib
 t/tlib/full/elib/xpto/lib
+!no_such_dir/for/real
