@@ -134,3 +134,5 @@ The current recommended way of doing this is to create your own package like thi
     }
 
     1;
+
+=cut
