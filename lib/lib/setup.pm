@@ -18,7 +18,9 @@ sub import {
 
   push @dirs, 'lib' unless @dirs;
 
-  unshift @INC, _find_libs($files, @dirs);
+  my @libs = _find_libs($files, @dirs);
+  warn('[lib::setup] adding libs:', map {" '$_'"} @libs) if $ENV{LIB_SETUP_DEBUG};
+  unshift @INC, @libs;
 }
 
 
