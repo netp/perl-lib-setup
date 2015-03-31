@@ -18,7 +18,9 @@ sub import {
 
   push @dirs, 'lib' unless @dirs;
 
-  unshift @INC, _find_libs($files, @dirs);
+  my @libs = _find_libs($files, @dirs);
+  warn('[lib::setup] adding libs:', map {" '$_'"} @libs) if $ENV{LIB_SETUP_DEBUG};
+  unshift @INC, @libs;
 }
 
 
@@ -35,10 +37,12 @@ sub _find_libs {
     $current_libs{$p} = 1 if $p;
   }
 
-  return
-    grep { $_ and -d $_ and ++$current_libs{$_} == 1 }
-    map { eval { $root->child($_)->realpath->stringify } }
-    @dirs;
+  return grep { $_ and -d $_ and ++$current_libs{$_} == 1 }
+    map {
+    my $r = eval { $root->child($_)->realpath->stringify };
+    warn("[lib::setup] Error $@\n") if $ENV{LIB_SETUP_DEBUG} and $@;
+    $r
+    } @dirs;
 }
 
 sub _find_project_root {

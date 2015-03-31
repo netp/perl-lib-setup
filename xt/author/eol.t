@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 
-# this test was generated with Dist::Zilla::Plugin::Test::NoTabs 0.13
+# this test was generated with Dist::Zilla::Plugin::Test::EOL 0.17
 
 use Test::More 0.88;
-use Test::NoTabs;
+use Test::EOL;
 
 my @files = (
     'lib/lib/setup.pm',
@@ -21,5 +21,5 @@ my @files = (
     't/tlib/full/matches.lst'
 );
 
-notabs_ok($_) foreach @files;
+eol_unix_ok($_, { trailing_whitespace => 1 }) foreach @files;
 done_testing;

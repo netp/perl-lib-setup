@@ -7,7 +7,7 @@ build_requires:
   Test::More: '0.98'
   perl: '5.006'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060'
+generated_by: 'Dist::Zilla version 5.031, CPAN::Meta::Converter version 2.143240'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -44,11 +44,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@Author::MELO/@GitHub/GitHub::Meta'
-      version: '0.38'
+      version: '0.40'
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@Author::MELO/@GitHub/GitHub::Update'
-      version: '0.38'
+      version: '0.40'
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       config:
@@ -59,39 +59,48 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::MELO/Git::NextVersion'
-      version: '2.023'
+      version: '2.029'
     -
       class: Dist::Zilla::Plugin::GenerateFile
       name: '@Author::MELO/GenerateManifestSkip'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::GenerateFile
       name: '@Author::MELO/GenerateTravisCfg'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::GatherDir
+      config:
+        Dist::Zilla::Plugin::GatherDir:
+          exclude_filename: []
+          exclude_match: []
+          follow_symlinks: '0'
+          include_dotfiles: '0'
+          prefix: ''
+          prune_directory: []
+          root: .
       name: '@Author::MELO/GatherDir'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@Author::MELO/PruneCruft'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@Author::MELO/ManifestSkip'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::PruneFiles
       name: '@Author::MELO/PruneRepoMetaFiles'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Authority
       name: '@Author::MELO/Authority'
-      version: '1.006'
+      version: '1.009'
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@Author::MELO/NextRelease'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::OurPkgVersion
       name: '@Author::MELO/OurPkgVersion'
@@ -117,105 +126,105 @@ x_Dist_Zilla:
             -
               class: Pod::Weaver::Plugin::EnsurePod5
               name: '@CorePrep/EnsurePod5'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Plugin::H1Nester
               name: '@CorePrep/H1Nester'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Name
               name: '@Author::MELO/Name'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Version
               name: '@Author::MELO/Version'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Region
               name: '@Author::MELO/Prelude'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Generic
               name: '@Author::MELO/Synopsis'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Generic
               name: '@Author::MELO/Description'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Generic
               name: '@Author::MELO/Overview'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Generic
               name: '@Author::MELO/Usage'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Collect
               name: '@Author::MELO/Attributes'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Collect
               name: '@Author::MELO/Constructors'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Collect
               name: '@Author::MELO/Methods'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Collect
               name: '@Author::MELO/Functions'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Leftovers
               name: '@Author::MELO/Leftovers'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Region
               name: '@Author::MELO/Postlude'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Support
               name: '@Author::MELO/Support'
-              version: '1.005'
+              version: '1.007'
             -
               class: Pod::Weaver::Section::Generic
               name: '@Author::MELO/Acknowledgements'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Authors
               name: '@Author::MELO/Authors'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Section::Legal
               name: '@Author::MELO/Legal'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Plugin::Transformer
               name: '@Author::MELO/List'
-              version: '4.006'
+              version: '4.010'
             -
               class: Pod::Weaver::Plugin::StopWords
               name: '@Author::MELO/StopWords'
-              version: '1.009'
+              version: '1.010'
       name: '@Author::MELO/PodWeaver'
       version: '4.006'
     -
       class: Dist::Zilla::Plugin::License
       name: '@Author::MELO/License'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Readme
       name: '@Author::MELO/Readme'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@Author::MELO/AutoPrereqs'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::MetaNoIndex
       name: '@Author::MELO/MetaNoIndex'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::MetaProvides::Package
       config:
@@ -224,29 +233,29 @@ x_Dist_Zilla:
             -
               class: Dist::Zilla::Plugin::FinderCode
               name: '@Author::MELO/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
-              version: '5.020'
+              version: '5.031'
         Dist::Zilla::Role::MetaProvider::Provider:
           inherit_missing: '1'
           inherit_version: '1'
           meta_noindex: '1'
       name: '@Author::MELO/MetaProvides::Package'
-      version: '2.000004'
+      version: '2.003001'
     -
       class: Dist::Zilla::Plugin::MinimumPerl
       name: '@Author::MELO/MinimumPerl'
-      version: '1.003'
+      version: '1.006'
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Author::MELO/MetaConfig'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@Author::MELO/MetaYAML'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@Author::MELO/MetaJSON'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -254,22 +263,22 @@ x_Dist_Zilla:
           phase: test
           type: requires
       name: '@Author::MELO/TestMoreWithSubtests'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@Author::MELO/ExecDir'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@Author::MELO/ShareDir'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::MakeMaker
       config:
         Dist::Zilla::Role::TestRunner:
           default_jobs: 1
       name: '@Author::MELO/MakeMaker'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Test::Pod::No404s
       name: '@Author::MELO/Test::Pod::No404s'
@@ -277,27 +286,27 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::UnusedVars
       name: '@Author::MELO/@TestingMania/Test::UnusedVars'
-      version: '2.000006'
+      version: '2.000007'
     -
       class: Dist::Zilla::Plugin::Test::Synopsis
       name: '@Author::MELO/@TestingMania/Test::Synopsis'
-      version: '2.000005'
+      version: '2.000006'
     -
       class: Dist::Zilla::Plugin::Test::Portability
       name: '@Author::MELO/@TestingMania/Test::Portability'
-      version: '2.000005'
+      version: '2.000006'
     -
       class: Dist::Zilla::Plugin::Test::Version
       name: '@Author::MELO/@TestingMania/Test::Version'
-      version: '0.002004'
+      version: '0.003001'
     -
       class: Dist::Zilla::Plugin::PodCoverageTests
       name: '@Author::MELO/@TestingMania/PodCoverageTests'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Test::CPAN::Changes
       name: '@Author::MELO/@TestingMania/Test::CPAN::Changes'
-      version: '0.008'
+      version: '0.009'
     -
       class: Dist::Zilla::Plugin::Test::CPAN::Meta::JSON
       name: '@Author::MELO/@TestingMania/Test::CPAN::Meta::JSON'
@@ -305,11 +314,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::DistManifest
       name: '@Author::MELO/@TestingMania/Test::DistManifest'
-      version: '2.000004'
+      version: '2.000005'
     -
       class: Dist::Zilla::Plugin::MetaTests
       name: '@Author::MELO/@TestingMania/MetaTests'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Test::Compile
       config:
@@ -326,7 +335,7 @@ x_Dist_Zilla:
             - ':ExecFiles'
           skips: []
       name: '@Author::MELO/@TestingMania/Test::Compile'
-      version: '2.045'
+      version: '2.051'
     -
       class: Dist::Zilla::Plugin::Test::NoTabs
       config:
@@ -337,30 +346,39 @@ x_Dist_Zilla:
             - ':ExecFiles'
             - ':TestFiles'
       name: '@Author::MELO/@TestingMania/Test::NoTabs'
-      version: '0.09'
+      version: '0.13'
     -
       class: Dist::Zilla::Plugin::Test::Kwalitee
       config:
         Dist::Zilla::Plugin::Test::Kwalitee:
+          filename: xt/release/kwalitee.t
           skiptest: []
       name: '@Author::MELO/@TestingMania/Test::Kwalitee'
-      version: '2.08'
+      version: '2.11'
     -
       class: Dist::Zilla::Plugin::Test::MinimumVersion
       name: '@Author::MELO/@TestingMania/Test::MinimumVersion'
-      version: '2.000005'
+      version: '2.000006'
     -
       class: Dist::Zilla::Plugin::Test::Pod::LinkCheck
       name: '@Author::MELO/@TestingMania/Test::Pod::LinkCheck'
       version: '1.001'
     -
       class: Dist::Zilla::Plugin::Test::EOL
+      config:
+        Dist::Zilla::Plugin::Test::EOL:
+          filename: xt/author/eol.t
+          finder:
+            - ':InstallModules'
+            - ':ExecFiles'
+            - ':TestFiles'
+          trailing_whitespace: '1'
       name: '@Author::MELO/@TestingMania/Test::EOL'
-      version: '0.12'
+      version: '0.17'
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Author::MELO/@TestingMania/PodSyntaxTests'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::MojibakeTests
       name: '@Author::MELO/@TestingMania/MojibakeTests'
@@ -368,27 +386,27 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@Author::MELO/Manifest'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::CheckExtraTests
       name: '@Author::MELO/CheckExtraTests'
-      version: '0.022'
+      version: '0.025'
     -
       class: Dist::Zilla::Plugin::CheckChangesHasContent
       name: '@Author::MELO/CheckChangesHasContent'
-      version: '0.006'
+      version: '0.007'
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Author::MELO/TestRelease'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@Author::MELO/ConfirmRelease'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Author::MELO/UploadToCPAN'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
       config:
@@ -402,7 +420,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::MELO/Git::CommitBuild'
-      version: '2.023'
+      version: '2.029'
     -
       class: Dist::Zilla::Plugin::Git::Check
       config:
@@ -417,7 +435,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::MELO/@Git/Check'
-      version: '2.023'
+      version: '2.029'
     -
       class: Dist::Zilla::Plugin::Git::Commit
       config:
@@ -434,7 +452,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::MELO/@Git/Commit'
-      version: '2.023'
+      version: '2.029'
     -
       class: Dist::Zilla::Plugin::Git::Tag
       config:
@@ -448,7 +466,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::MELO/@Git/Tag'
-      version: '2.023'
+      version: '2.029'
     -
       class: Dist::Zilla::Plugin::Git::Push
       config:
@@ -461,7 +479,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::MELO/@Git/Push'
-      version: '2.023'
+      version: '2.029'
     -
       class: Dist::Zilla::Plugin::InstallRelease
       name: '@Author::MELO/InstallRelease'
@@ -477,42 +495,42 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':AllFiles'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':NoFiles'
-      version: '5.020'
+      version: '5.031'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: '@Author::MELO/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
-      version: '5.020'
+      version: '5.031'
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: '0'
-    version: '5.020'
+    version: '5.031'
 x_authority: cpan:MELO
