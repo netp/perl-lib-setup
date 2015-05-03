@@ -17,6 +17,7 @@ sub import {
   $files = [$files] unless ref($files);
 
   push @dirs, 'lib' unless @dirs;
+  warn('[lib::setup] check dirs for libs:', map {" '$_'"} @dirs) if $ENV{LIB_SETUP_DEBUG};
 
   my @libs = _find_libs($files, @dirs);
   warn('[lib::setup] adding libs:', map {" '$_'"} @libs) if $ENV{LIB_SETUP_DEBUG};
@@ -28,7 +29,10 @@ sub _find_libs {
   my ($files, @dirs) = @_;
 
   my $root = _find_project_root($files);
-  return unless $root;    ## TODO: show warning in this case?
+  unless ($root) {
+    warn('[lib::setup] could not find root of project') if $ENV{LIB_SETUP_DEBUG};
+    return;
+  }
 
   my %current_libs;
   for my $i (@INC) {
